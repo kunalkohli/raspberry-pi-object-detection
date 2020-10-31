@@ -21,6 +21,12 @@ def collect_images():
 	with picamera.PiCamera() as camera:
 		while(1):
 			camera.start_preview()
+			camera.rotation = ROTATION
+			camera.resolution = (1280,820)
+			#camera.exposure_mode = 'off'
+			camera.iso = 1600
+			#camera.framerate =30
+			camera.shutter_speed = 60000000
 			camera.capture('image.jpg')
 			camera.stop_preview()
 			yield (b'--frame\r\n' 
